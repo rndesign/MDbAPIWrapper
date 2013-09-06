@@ -10,6 +10,10 @@
 #########################
 
 #####
+# POD files that should never be committed
+Pods/
+
+#####
 # OS X temporary files that should never be committed
 
 .DS_Store
