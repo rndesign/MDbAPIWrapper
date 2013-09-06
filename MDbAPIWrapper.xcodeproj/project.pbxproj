@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		014B393117DA3E6100DB9AE8 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 014B393017DA3E6100DB9AE8 /* Movie.m */; };
+		01DD572617DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
+		01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573317DA3D1E001DB1E1 /* XCTest.framework */; };
+		01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
+		01DD573717DA3D1E001DB1E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573617DA3D1E001DB1E1 /* UIKit.framework */; };
+		01DD573A17DA3D1E001DB1E1 /* libMDbAPIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */; };
+		01DD574017DA3D1E001DB1E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01DD573E17DA3D1E001DB1E1 /* InfoPlist.strings */; };
+		01DD574217DA3D1E001DB1E1 /* MDbAPIWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DD574117DA3D1E001DB1E1 /* MDbAPIWrapperTests.m */; };
+		2EDDC25CBBA84EF1974ADF94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E651CC8D5124568B9656689 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01DD573817DA3D1E001DB1E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01DD571A17DA3D1E001DB1E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01DD572117DA3D1E001DB1E1;
+			remoteInfo = MDbAPIWrapper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		01DD572017DA3D1E001DB1E1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		014B392E17DA3E6100DB9AE8 /* MDbAPIWrapperProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDbAPIWrapperProtocol.h; sourceTree = "<group>"; };
+		014B392F17DA3E6100DB9AE8 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		014B393017DA3E6100DB9AE8 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMDbAPIWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DD572517DA3D1E001DB1E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		01DD572917DA3D1E001DB1E1 /* MDbAPIWrapper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MDbAPIWrapper-Prefix.pch"; sourceTree = "<group>"; };
+		01DD573217DA3D1E001DB1E1 /* MDbAPIWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MDbAPIWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01DD573317DA3D1E001DB1E1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		01DD573617DA3D1E001DB1E1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		01DD573D17DA3D1E001DB1E1 /* MDbAPIWrapperTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MDbAPIWrapperTests-Info.plist"; sourceTree = "<group>"; };
+		01DD573F17DA3D1E001DB1E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		01DD574117DA3D1E001DB1E1 /* MDbAPIWrapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDbAPIWrapperTests.m; sourceTree = "<group>"; };
+		6E651CC8D5124568B9656689 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		92A1AB22421B4458AE6C9D9E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01DD571F17DA3D1E001DB1E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DD572617DA3D1E001DB1E1 /* Foundation.framework in Frameworks */,
+				2EDDC25CBBA84EF1974ADF94 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01DD572F17DA3D1E001DB1E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */,
+				01DD573717DA3D1E001DB1E1 /* UIKit.framework in Frameworks */,
+				01DD573A17DA3D1E001DB1E1 /* libMDbAPIWrapper.a in Frameworks */,
+				01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01DD571917DA3D1E001DB1E1 = {
+			isa = PBXGroup;
+			children = (
+				01DD572717DA3D1E001DB1E1 /* MDbAPIWrapper */,
+				01DD573B17DA3D1E001DB1E1 /* MDbAPIWrapperTests */,
+				01DD572417DA3D1E001DB1E1 /* Frameworks */,
+				01DD572317DA3D1E001DB1E1 /* Products */,
+				92A1AB22421B4458AE6C9D9E /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		01DD572317DA3D1E001DB1E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */,
+				01DD573217DA3D1E001DB1E1 /* MDbAPIWrapperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01DD572417DA3D1E001DB1E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				01DD572517DA3D1E001DB1E1 /* Foundation.framework */,
+				01DD573317DA3D1E001DB1E1 /* XCTest.framework */,
+				01DD573617DA3D1E001DB1E1 /* UIKit.framework */,
+				6E651CC8D5124568B9656689 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		01DD572717DA3D1E001DB1E1 /* MDbAPIWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				014B392E17DA3E6100DB9AE8 /* MDbAPIWrapperProtocol.h */,
+				014B392F17DA3E6100DB9AE8 /* Movie.h */,
+				014B393017DA3E6100DB9AE8 /* Movie.m */,
+				01DD572817DA3D1E001DB1E1 /* Supporting Files */,
+			);
+			path = MDbAPIWrapper;
+			sourceTree = "<group>";
+		};
+		01DD572817DA3D1E001DB1E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01DD572917DA3D1E001DB1E1 /* MDbAPIWrapper-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		01DD573B17DA3D1E001DB1E1 /* MDbAPIWrapperTests */ = {
+			isa = PBXGroup;
+			children = (
+				01DD574117DA3D1E001DB1E1 /* MDbAPIWrapperTests.m */,
+				01DD573C17DA3D1E001DB1E1 /* Supporting Files */,
+			);
+			path = MDbAPIWrapperTests;
+			sourceTree = "<group>";
+		};
+		01DD573C17DA3D1E001DB1E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				01DD573D17DA3D1E001DB1E1 /* MDbAPIWrapperTests-Info.plist */,
+				01DD573E17DA3D1E001DB1E1 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01DD572117DA3D1E001DB1E1 /* MDbAPIWrapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01DD574517DA3D1E001DB1E1 /* Build configuration list for PBXNativeTarget "MDbAPIWrapper" */;
+			buildPhases = (
+				FCD8216C829D42119C39141A /* Check Pods Manifest.lock */,
+				01DD571E17DA3D1E001DB1E1 /* Sources */,
+				01DD571F17DA3D1E001DB1E1 /* Frameworks */,
+				01DD572017DA3D1E001DB1E1 /* CopyFiles */,
+				7D74C8B90940477E8A97482F /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MDbAPIWrapper;
+			productName = MDbAPIWrapper;
+			productReference = 01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		01DD573117DA3D1E001DB1E1 /* MDbAPIWrapperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01DD574817DA3D1E001DB1E1 /* Build configuration list for PBXNativeTarget "MDbAPIWrapperTests" */;
+			buildPhases = (
+				01DD572E17DA3D1E001DB1E1 /* Sources */,
+				01DD572F17DA3D1E001DB1E1 /* Frameworks */,
+				01DD573017DA3D1E001DB1E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01DD573917DA3D1E001DB1E1 /* PBXTargetDependency */,
+			);
+			name = MDbAPIWrapperTests;
+			productName = MDbAPIWrapperTests;
+			productReference = 01DD573217DA3D1E001DB1E1 /* MDbAPIWrapperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01DD571A17DA3D1E001DB1E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "RN Design";
+			};
+			buildConfigurationList = 01DD571D17DA3D1E001DB1E1 /* Build configuration list for PBXProject "MDbAPIWrapper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 01DD571917DA3D1E001DB1E1;
+			productRefGroup = 01DD572317DA3D1E001DB1E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01DD572117DA3D1E001DB1E1 /* MDbAPIWrapper */,
+				01DD573117DA3D1E001DB1E1 /* MDbAPIWrapperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01DD573017DA3D1E001DB1E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DD574017DA3D1E001DB1E1 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7D74C8B90940477E8A97482F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCD8216C829D42119C39141A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01DD571E17DA3D1E001DB1E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				014B393117DA3E6100DB9AE8 /* Movie.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01DD572E17DA3D1E001DB1E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DD574217DA3D1E001DB1E1 /* MDbAPIWrapperTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01DD573917DA3D1E001DB1E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01DD572117DA3D1E001DB1E1 /* MDbAPIWrapper */;
+			targetProxy = 01DD573817DA3D1E001DB1E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		01DD573E17DA3D1E001DB1E1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01DD573F17DA3D1E001DB1E1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01DD574317DA3D1E001DB1E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		01DD574417DA3D1E001DB1E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01DD574617DA3D1E001DB1E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92A1AB22421B4458AE6C9D9E /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/MDbAPIWrapper.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MDbAPIWrapper/MDbAPIWrapper-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		01DD574717DA3D1E001DB1E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92A1AB22421B4458AE6C9D9E /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/MDbAPIWrapper.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MDbAPIWrapper/MDbAPIWrapper-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		01DD574917DA3D1E001DB1E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MDbAPIWrapper/MDbAPIWrapper-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MDbAPIWrapperTests/MDbAPIWrapperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		01DD574A17DA3D1E001DB1E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MDbAPIWrapper/MDbAPIWrapper-Prefix.pch";
+				INFOPLIST_FILE = "MDbAPIWrapperTests/MDbAPIWrapperTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01DD571D17DA3D1E001DB1E1 /* Build configuration list for PBXProject "MDbAPIWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DD574317DA3D1E001DB1E1 /* Debug */,
+				01DD574417DA3D1E001DB1E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01DD574517DA3D1E001DB1E1 /* Build configuration list for PBXNativeTarget "MDbAPIWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DD574617DA3D1E001DB1E1 /* Debug */,
+				01DD574717DA3D1E001DB1E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01DD574817DA3D1E001DB1E1 /* Build configuration list for PBXNativeTarget "MDbAPIWrapperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01DD574917DA3D1E001DB1E1 /* Debug */,
+				01DD574A17DA3D1E001DB1E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 01DD571A17DA3D1E001DB1E1 /* Project object */;
+}
