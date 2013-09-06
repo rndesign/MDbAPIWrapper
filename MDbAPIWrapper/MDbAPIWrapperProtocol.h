@@ -6,8 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class Movie
+#import "Movie.h"
 
 typedef NS_ENUM(NSInteger, MovieListType) {
     MovieListTypeBoxOffice,
@@ -16,19 +15,18 @@ typedef NS_ENUM(NSInteger, MovieListType) {
     MovieListTypeUpcoming,
     MovieListTypePopular,
     MovieListTypeTop
-} MovieListType;
+};
 
 @protocol MDbAPIWrapperProtocol <NSObject>
-
-@required
-- (void)fetchMovie:(NSString *movieID)
-               success:(void (^)(Movie *movie))success
-               failure:(void (^)(NSError *error))failure;
 
 @optional
 - (void)fetchMovieList:(MovieListType *)type
                  limit:(NSInteger)limit
                success:(void (^)(NSArray *movieList))success
+               failure:(void (^)(NSError *error))failure;
+
+- (void)fetchMovieByID:(NSString *)movieID
+               success:(void (^)(Movie *movie))success
                failure:(void (^)(NSError *error))failure;
 
 @end

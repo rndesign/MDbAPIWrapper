@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		014B393117DA3E6100DB9AE8 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 014B393017DA3E6100DB9AE8 /* Movie.m */; };
+		015A874817DA51920076E10B /* OMDbAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A874417DA47A00076E10B /* OMDbAPIWrapper.m */; };
+		015A874917DA51920076E10B /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 014B393017DA3E6100DB9AE8 /* Movie.m */; };
 		01DD572617DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
 		01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573317DA3D1E001DB1E1 /* XCTest.framework */; };
 		01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
@@ -44,6 +45,8 @@
 		014B392E17DA3E6100DB9AE8 /* MDbAPIWrapperProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDbAPIWrapperProtocol.h; sourceTree = "<group>"; };
 		014B392F17DA3E6100DB9AE8 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		014B393017DA3E6100DB9AE8 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		015A874317DA47A00076E10B /* OMDbAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDbAPIWrapper.h; sourceTree = "<group>"; };
+		015A874417DA47A00076E10B /* OMDbAPIWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDbAPIWrapper.m; sourceTree = "<group>"; };
 		01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMDbAPIWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DD572517DA3D1E001DB1E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		01DD572917DA3D1E001DB1E1 /* MDbAPIWrapper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MDbAPIWrapper-Prefix.pch"; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				014B392E17DA3E6100DB9AE8 /* MDbAPIWrapperProtocol.h */,
+				015A874317DA47A00076E10B /* OMDbAPIWrapper.h */,
+				015A874417DA47A00076E10B /* OMDbAPIWrapper.m */,
 				014B392F17DA3E6100DB9AE8 /* Movie.h */,
 				014B393017DA3E6100DB9AE8 /* Movie.m */,
 				01DD572817DA3D1E001DB1E1 /* Supporting Files */,
@@ -265,7 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				014B393117DA3E6100DB9AE8 /* Movie.m in Sources */,
+				015A874817DA51920076E10B /* OMDbAPIWrapper.m in Sources */,
+				015A874917DA51920076E10B /* Movie.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
