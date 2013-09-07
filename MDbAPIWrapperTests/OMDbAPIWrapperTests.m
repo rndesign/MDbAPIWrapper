@@ -1,9 +1,8 @@
 //
-//  OMDbAPIWrapperTests.m
-//  MDbAPIWrapper
+//  Files: OMDbAPIWrapperTests.h
 //
-//  Created by Nick on 7/9/13.
-//  Copyright (c) 2013 RN Design. All rights reserved.
+//  Copyright: (c) 2013 RN Design.
+//  License: GNU General Public License, version 2.
 //
 
 #import <XCTest/XCTest.h>
