@@ -17,25 +17,49 @@
 
 OMDbAPIWrapper *wrapper;
 
-- (void)setUp
-{
+- (void)setUp {
     [super setUp];
     // Put setup code here; it will be run once, before the first test case.
     wrapper = [OMDbAPIWrapper sharedInstance];
 }
 
-- (void)tearDown
-{
+- (void)tearDown {
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
 }
 
-- (void)testFetchMovie
-{
+- (void)testFetchMovie {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
     [wrapper fetchMovieByID:@"tt1285016" success:^(Movie *movie) {
         XCTAssertTrue(movie.movieID, @"tt1285015");
         XCTAssertTrue(movie.title = @"The Social Network");
-    } failure:nil];
+    
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        XCTFail(@"Failed because of %@", [error userInfo]);
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+}
+
+- (void)testFetchMovieWithInvalidID {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [wrapper fetchMovieByID:@"tt1285016" success:^(Movie *movie) {
+        XCTAssertTrue(movie.title == nil);
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        XCTFail(@"Failed because of %@", [error userInfo]);
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 }
 
 @end
