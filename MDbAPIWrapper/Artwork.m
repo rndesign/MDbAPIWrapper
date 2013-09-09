@@ -9,4 +9,12 @@
 
 @implementation Artwork
 
+- (id)initWithIMDbID:(NSString *)imdbID type:(enum ArtworkType)type {
+    if (self = [super init]) {
+        self.movieID = imdbID;
+        self.type = type;
+    }
+    return self;
+}
+
 @end

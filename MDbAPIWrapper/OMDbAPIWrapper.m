@@ -34,19 +34,21 @@ static NSString *BASE_URL = @"http://www.omdbapi.com?";
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        Movie *movie = [[Movie alloc] init];
-        
-        movie.movieID = [JSON objectForKey:@"imdbID"];
-        movie.title = [JSON objectForKey:@"title"];
-        movie.imdbID = movie.movieID;
-        
-        Artwork *poster = [[Artwork alloc] init];
-        poster.remotePath = [JSON objectForKey:@"Poster"];
-        movie.poster = poster;
-        
-        success(movie);
+        if (success) {
+            Movie *movie = [[Movie alloc] init];
+            
+            movie.movieID = [JSON objectForKey:@"imdbID"];
+            movie.title = [JSON objectForKey:@"title"];
+            movie.imdbID = movie.movieID;
+            
+            Artwork *poster = [[Artwork alloc] init];
+            poster.remotePath = [JSON objectForKey:@"Poster"];
+            movie.poster = poster;
+            
+            success(movie);
+        }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        failure(error);
+        if (failure) failure(error);
     }];
     
     // have to add "text/html" to acceptable content types

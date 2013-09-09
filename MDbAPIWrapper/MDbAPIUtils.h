@@ -6,9 +6,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "Artwork.h"
 
 @interface MDbAPIUtils : NSObject
 
-+ (NSString *)compositeRequestURL:(NSString *)baseURL parameters:(NSDictionary *)parameters;
++ (NSString *)compositeRequestURL:(NSString *)baseURL
+                       parameters:(NSDictionary *)parameters;
+
++ (void)fetchImageArtwork:(Artwork *)artwork
+     imageProcessingBlock:(UIImage *(^)(UIImage *))imageProcessingBlock
+             success:(void(^)(UIImage *))success
+             failure:(void(^)(NSError *error))failure;
 
 @end

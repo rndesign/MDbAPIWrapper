@@ -13,10 +13,10 @@
 		015EFA0B17DB7A4100E50D8A /* MDbAPIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0A17DB7A4100E50D8A /* MDbAPIUtils.m */; };
 		015EFA0D17DB838A00E50D8A /* OMDbAPIWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0C17DB838A00E50D8A /* OMDbAPIWrapperTests.m */; };
 		015EFA0F17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 015EFA0E17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist */; };
+		01B11ADB17DE194700D4C450 /* MDbAPIUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */; };
 		01DD572617DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
 		01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573317DA3D1E001DB1E1 /* XCTest.framework */; };
 		01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
-		01DD573717DA3D1E001DB1E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573617DA3D1E001DB1E1 /* UIKit.framework */; };
 		01DD573A17DA3D1E001DB1E1 /* libMDbAPIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */; };
 		01DD574017DA3D1E001DB1E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01DD573E17DA3D1E001DB1E1 /* InfoPlist.strings */; };
 		2EDDC25CBBA84EF1974ADF94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E651CC8D5124568B9656689 /* libPods.a */; };
@@ -56,6 +56,7 @@
 		015EFA0A17DB7A4100E50D8A /* MDbAPIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDbAPIUtils.m; sourceTree = "<group>"; };
 		015EFA0C17DB838A00E50D8A /* OMDbAPIWrapperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OMDbAPIWrapperTests.m; sourceTree = "<group>"; };
 		015EFA0E17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MDbAPIWrapperTests-Info.plist"; sourceTree = "<group>"; };
+		01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDbAPIUtilsTests.m; path = ../MDbAPIWrapper/MDbAPIUtilsTests.m; sourceTree = "<group>"; };
 		01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMDbAPIWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DD572517DA3D1E001DB1E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		01DD572917DA3D1E001DB1E1 /* MDbAPIWrapper-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MDbAPIWrapper-Prefix.pch"; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */,
-				01DD573717DA3D1E001DB1E1 /* UIKit.framework in Frameworks */,
 				01DD573A17DA3D1E001DB1E1 /* libMDbAPIWrapper.a in Frameworks */,
 				01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */,
 			);
@@ -150,6 +150,7 @@
 		01DD573B17DA3D1E001DB1E1 /* MDbAPIWrapperTests */ = {
 			isa = PBXGroup;
 			children = (
+				01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */,
 				015EFA0C17DB838A00E50D8A /* OMDbAPIWrapperTests.m */,
 				01DD573C17DA3D1E001DB1E1 /* Supporting Files */,
 			);
@@ -293,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01B11ADB17DE194700D4C450 /* MDbAPIUtilsTests.m in Sources */,
 				015EFA0D17DB838A00E50D8A /* OMDbAPIWrapperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +392,10 @@
 			baseConfigurationReference = 92A1AB22421B4458AE6C9D9E /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/MDbAPIWrapper.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDbAPIWrapper/MDbAPIWrapper-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
@@ -403,6 +409,10 @@
 			baseConfigurationReference = 92A1AB22421B4458AE6C9D9E /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/MDbAPIWrapper.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MDbAPIWrapper/MDbAPIWrapper-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
