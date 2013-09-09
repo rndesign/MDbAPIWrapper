@@ -19,4 +19,8 @@
              success:(void(^)(UIImage *))success
              failure:(void(^)(NSError *error))failure;
 
++ (void)fetchTrailerURLFromYouTube:(NSString *)title
+                success:(void(^)(NSString *videoURL))success
+                failure:(void(^)(NSError *error))failure;
+
 @end

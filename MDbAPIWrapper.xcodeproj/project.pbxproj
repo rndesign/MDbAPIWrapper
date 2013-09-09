@@ -12,13 +12,11 @@
 		015EFA0817DB763500E50D8A /* Artwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0717DB763500E50D8A /* Artwork.m */; };
 		015EFA0B17DB7A4100E50D8A /* MDbAPIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0A17DB7A4100E50D8A /* MDbAPIUtils.m */; };
 		015EFA0D17DB838A00E50D8A /* OMDbAPIWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0C17DB838A00E50D8A /* OMDbAPIWrapperTests.m */; };
-		015EFA0F17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 015EFA0E17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist */; };
 		01B11ADB17DE194700D4C450 /* MDbAPIUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */; };
 		01DD572617DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
 		01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573317DA3D1E001DB1E1 /* XCTest.framework */; };
 		01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
 		01DD573A17DA3D1E001DB1E1 /* libMDbAPIWrapper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */; };
-		01DD574017DA3D1E001DB1E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01DD573E17DA3D1E001DB1E1 /* InfoPlist.strings */; };
 		2EDDC25CBBA84EF1974ADF94 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E651CC8D5124568B9656689 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -238,8 +236,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				015EFA0F17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist in Resources */,
-				01DD574017DA3D1E001DB1E1 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

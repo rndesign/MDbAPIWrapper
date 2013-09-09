@@ -7,15 +7,22 @@
 
 #import "MDbAPIUtils.h"
 #import "AFImageRequestOperation.h"
+#import "AFJSONRequestOperation.h"
 
 @implementation MDbAPIUtils
+
+NSString *YOUTUBE_QUERY_TEMPLATE = @"http://gdata.youtube.com/feeds/api/videos?q=%@-trailer&start-index=1&max-results=1&v=2&alt=json&hd";
+
++ (NSString *)encodeURLParameterValue:(NSString *)value {
+    return [value stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+}
 
 + (NSString *)compositeRequestURL:(NSString *)baseURL parameters:(NSDictionary *)parameters {
     NSString *formattedParams = [[NSString alloc] init];
     
     for (id paramName in parameters) {
         NSString *paramValue = [parameters objectForKey:paramName];
-        NSString *encodedParamValue = [paramValue stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+        NSString *encodedParamValue = [self encodeURLParameterValue:paramValue];
         formattedParams = [formattedParams stringByAppendingFormat:@"%@=%@&", paramName, encodedParamValue];
     }
     
@@ -55,6 +62,32 @@
         
         [operation start];
     }
+}
+
++ (void)fetchTrailerURLFromYouTube:(NSString *)title
+                success:(void (^)(NSString *))success
+                failure:(void (^)(NSError *))failure {
+    // strip title
+    NSRange range = [title rangeOfString:@":"];
+    if (range.location != NSNotFound) title = [title substringToIndex:range.location];
+    // encode title
+    title = [self encodeURLParameterValue:title];
+    // composite url accodring to source type
+    NSString *url = [NSString stringWithFormat:YOUTUBE_QUERY_TEMPLATE, title];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        if (success) {
+            NSString *videoURL = videoURL = [[[[[JSON objectForKey:@"feed"] objectForKey:@"entry"] firstObject] objectForKey:@"content"] objectForKey:@"src"];
+            
+            success(videoURL);
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Error happened for the request on %@: %@", [[request URL] absoluteString],[error userInfo]);
+        if (failure) failure(error);
+    }];
+    
+    [operation start];
 }
 
 @end

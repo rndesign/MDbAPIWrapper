@@ -36,9 +36,7 @@
     [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil success:^(UIImage *image) {
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(image);
-    } failure:^(NSError *error) {
-        dispatch_semaphore_signal(semaphore);
-    }];
+    } failure:nil];
 }
 
 - (void)testFetchInvalidImageArkwork {
@@ -51,6 +49,34 @@
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(error);
     }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW)) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    }
+}
+
+- (void)testFetchTrailerURLFromYouTube {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [MDbAPIUtils fetchTrailerURLFromYouTube:@"The Social Network" success:^(NSString *videoURL) {
+        dispatch_semaphore_signal(semaphore);
+        XCTAssertTrue(videoURL);
+    } failure:nil];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW)) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+    }
+}
+
+- (void)testFetchInvaildTrailerURLFromYouTube {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [MDbAPIUtils fetchTrailerURLFromYouTube:@"" success:^(NSString *videoURL) {
+        dispatch_semaphore_signal(semaphore);
+        XCTAssertTrue(!videoURL);
+    } failure:nil];
     
     while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
