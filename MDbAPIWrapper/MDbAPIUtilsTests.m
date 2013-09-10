@@ -33,7 +33,7 @@
     Artwork *artwork = [[Artwork alloc] initWithIMDbID:@"tt1285016" type:ArtworkTypeImage];
     artwork.remotePath = @"http://ia.media-imdb.com/images/M/MV5BMTM2ODk0NDAwMF5BMl5BanBnXkFtZTcwNTM1MDc2Mw@@._V1_SX300.jpg";
     
-    [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil success:^(UIImage *image) {
+    [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:NO success:^(UIImage *image) {
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(image);
     } failure:nil];
@@ -45,7 +45,7 @@
     Artwork *artwork = [[Artwork alloc] initWithIMDbID:@"tt1285016" type:ArtworkTypeImage];
     artwork.remotePath = @"in_the_middle_of_nowhere.jpg";
     
-    [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil success:nil failure:^(NSError *error) {
+    [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:NO success:nil failure:^(NSError *error) {
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(error);
     }];

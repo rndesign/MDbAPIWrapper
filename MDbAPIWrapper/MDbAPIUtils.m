@@ -11,7 +11,7 @@
 
 @implementation MDbAPIUtils
 
-NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?q=%@-trailer&start-index=1&max-results=1&v=2&alt=json&hd";
+static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?q=%@-trailer&start-index=1&max-results=1&v=2&alt=json&hd";
 
 + (NSString *)encodeURLParameterValue:(NSString *)value {
     return [value stringByReplacingOccurrencesOfString:@" " withString:@"+"];
@@ -31,26 +31,26 @@ NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?q=%@-tr
 
 + (void)fetchImageArtwork:(Artwork *)artwork
      imageProcessingBlock:(UIImage *(^)(UIImage *))imageProcessingBlock
-             success:(void (^)(UIImage *))success
-             failure:(void (^)(NSError *))failure {
+               storeImage:(BOOL)storeImage
+                  success:(void (^)(UIImage *))success
+                  failure:(void (^)(NSError *))failure {
     if (artwork.type != ArtworkTypeImage) return;
 
-    if ([[NSFileManager defaultManager] fileExistsAtPath:artwork.localPath]) {
-        NSData *imageData = [NSData dataWithContentsOfFile:artwork.localPath];
-        success(imageProcessingBlock([UIImage imageWithData:imageData]));
-    } else {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:artwork.localPath]) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:artwork.remotePath]];
         AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request imageProcessingBlock:^UIImage *(UIImage *image) {
-            // always store the original artkwork with PNG format
-            NSData *imageData = UIImagePNGRepresentation(image);
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
-            NSString *documentsPath = [paths objectAtIndex:0];
-            NSString *filename = [NSString stringWithFormat:@"/%@.png", artwork.movieID];
-            NSString *filePath = [documentsPath stringByAppendingString:filename];
-            dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [imageData writeToFile:filePath atomically:YES];
-                artwork.localPath = filePath;
-            });
+            if (storeImage) {
+                // always store the original artkwork with PNG format
+                NSData *imageData = UIImagePNGRepresentation(image);
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+                NSString *documentsPath = [paths objectAtIndex:0];
+                NSString *filename = [NSString stringWithFormat:@"/%@.png", artwork.movieID];
+                NSString *filePath = [documentsPath stringByAppendingString:filename];
+                dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    [imageData writeToFile:filePath atomically:YES];
+                    artwork.localPath = filePath;
+                });
+            }
             
             return imageProcessingBlock ? imageProcessingBlock(image) : image;
         } success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
@@ -61,6 +61,9 @@ NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?q=%@-tr
         }];
         
         [operation start];
+    } else {
+        NSData *imageData = [NSData dataWithContentsOfFile:artwork.localPath];
+        success(imageProcessingBlock([UIImage imageWithData:imageData]));
     }
 }
 

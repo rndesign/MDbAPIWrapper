@@ -16,12 +16,14 @@
 
 + (void)fetchImageArtwork:(Artwork *)artwork
      imageProcessingBlock:(UIImage *(^)(UIImage *))imageProcessingBlock
-             success:(void(^)(UIImage *))success
-             failure:(void(^)(NSError *error))failure;
+               storeImage:(BOOL)storeImage
+                  success:(void(^)(UIImage *))success
+                  failure:(void(^)(NSError *error))failure;
 
 + (void)setYouTuBeBaseURL:(NSString *)baseURL;
+
 + (void)fetchTrailerURLFromYouTube:(NSString *)title
-                success:(void(^)(NSString *videoURL))success
-                failure:(void(^)(NSError *error))failure;
+                           success:(void(^)(NSString *videoURL))success
+                           failure:(void(^)(NSError *error))failure;
 
 @end
