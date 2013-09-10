@@ -5,7 +5,6 @@
 //  License: GNU General Public License, version 2.
 //
 
-#import "Movie.h"
 #import "MDbAPIUtils.h"
 #import "OMDbAPIWrapper.h"
 #import "AFJSONRequestOperation.h"

@@ -13,6 +13,7 @@
 		015EFA0B17DB7A4100E50D8A /* MDbAPIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0A17DB7A4100E50D8A /* MDbAPIUtils.m */; };
 		015EFA0D17DB838A00E50D8A /* OMDbAPIWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0C17DB838A00E50D8A /* OMDbAPIWrapperTests.m */; };
 		01B085A517DF630B00FD5DB8 /* Rating.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B085A417DF630B00FD5DB8 /* Rating.m */; };
+		01B085A817DF6E1300FD5DB8 /* TMDbAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B085A717DF6E1300FD5DB8 /* TMDbAPIWrapper.m */; };
 		01B11ADB17DE194700D4C450 /* MDbAPIUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */; };
 		01DD572617DA3D1E001DB1E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD572517DA3D1E001DB1E1 /* Foundation.framework */; };
 		01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DD573317DA3D1E001DB1E1 /* XCTest.framework */; };
@@ -57,6 +58,8 @@
 		015EFA0E17DB861900E50D8A /* MDbAPIWrapperTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MDbAPIWrapperTests-Info.plist"; sourceTree = "<group>"; };
 		01B085A317DF630B00FD5DB8 /* Rating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rating.h; sourceTree = "<group>"; };
 		01B085A417DF630B00FD5DB8 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
+		01B085A617DF6E1300FD5DB8 /* TMDbAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDbAPIWrapper.h; sourceTree = "<group>"; };
+		01B085A717DF6E1300FD5DB8 /* TMDbAPIWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDbAPIWrapper.m; sourceTree = "<group>"; };
 		01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDbAPIUtilsTests.m; path = ../MDbAPIWrapper/MDbAPIUtilsTests.m; sourceTree = "<group>"; };
 		01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMDbAPIWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DD572517DA3D1E001DB1E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,8 @@
 				015EFA0A17DB7A4100E50D8A /* MDbAPIUtils.m */,
 				015A874317DA47A00076E10B /* OMDbAPIWrapper.h */,
 				015A874417DA47A00076E10B /* OMDbAPIWrapper.m */,
+				01B085A617DF6E1300FD5DB8 /* TMDbAPIWrapper.h */,
+				01B085A717DF6E1300FD5DB8 /* TMDbAPIWrapper.m */,
 				014B392F17DA3E6100DB9AE8 /* Movie.h */,
 				014B393017DA3E6100DB9AE8 /* Movie.m */,
 				015EFA0617DB763500E50D8A /* Artwork.h */,
@@ -289,6 +294,7 @@
 				015A874917DA51920076E10B /* Movie.m in Sources */,
 				015EFA0B17DB7A4100E50D8A /* MDbAPIUtils.m in Sources */,
 				015EFA0817DB763500E50D8A /* Artwork.m in Sources */,
+				01B085A817DF6E1300FD5DB8 /* TMDbAPIWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
