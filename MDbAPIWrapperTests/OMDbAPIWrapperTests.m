@@ -32,8 +32,10 @@ OMDbAPIWrapper *wrapper;
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     [wrapper fetchMovieByID:@"tt1285016" success:^(Movie *movie) {
+        XCTAssertTrue(movie);
         XCTAssertTrue(movie.movieID, @"tt1285015");
         XCTAssertTrue(movie.title = @"The Social Network");
+        XCTAssertTrue([movie.ratings count] == 1);
     
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSError *error) {
@@ -49,8 +51,8 @@ OMDbAPIWrapper *wrapper;
 - (void)testFetchMovieWithInvalidID {
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    [wrapper fetchMovieByID:@"tt1285016" success:^(Movie *movie) {
-        XCTAssertTrue(movie.title == nil);
+    [wrapper fetchMovieByID:@"tt" success:^(Movie *movie) {
+        XCTAssertTrue(!movie);
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSError *error) {
         XCTFail(@"Failed because of %@", [error userInfo]);

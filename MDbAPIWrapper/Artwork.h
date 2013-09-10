@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ENUM(NSInteger, ArtworkType) {
+typedef NS_ENUM(NSInteger, ArtworkType) {
     ArtworkTypeImage,
     ArtworkTypeVideo
 };

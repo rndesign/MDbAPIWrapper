@@ -5,7 +5,7 @@
 //  License: GNU General Public License, version 2.
 //
 
-#import "Artwork.h"
+#import "Movie.h"
 #import "MDbAPIUtils.h"
 #import "OMDbAPIWrapper.h"
 #import "AFJSONRequestOperation.h"
@@ -39,17 +39,24 @@ static NSString *BASE_URL = @"http://www.omdbapi.com?";
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         if (success) {
-            Movie *movie = [[Movie alloc] init];
-            
-            movie.movieID = [JSON objectForKey:@"imdbID"];
-            movie.title = [JSON objectForKey:@"title"];
-            movie.imdbID = movie.movieID;
-            
-            Artwork *poster = [[Artwork alloc] init];
-            poster.remotePath = [JSON objectForKey:@"Poster"];
-            movie.poster = poster;
-            
-            success(movie);
+            if ([JSON objectForKey:@"Error"]) {
+                success (nil);
+            } else {
+                Movie *movie = [[Movie alloc] initWithTitle:[JSON objectForKey:@"Title"]];
+                movie.movieID = [JSON objectForKey:@"imdbID"];
+                movie.imdbID = movie.movieID;
+                
+                Artwork *poster = [[Artwork alloc] init];
+                poster.remotePath = [JSON objectForKey:@"Poster"];
+                movie.poster = poster;
+                
+                Rating *rating = [[Rating alloc] initWithSource:RatingSourceIMDb];
+                rating.average = [JSON objectForKey:@"imdbRating"];
+                rating.votes = [JSON objectForKey:@"imdbVotes"];
+                [movie.ratings setObject:rating forKey:[NSNumber numberWithInt:RatingSourceIMDb]];
+                
+                success(movie);
+            }
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         if (failure) failure(error);
