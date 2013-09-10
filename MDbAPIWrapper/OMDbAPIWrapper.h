@@ -17,5 +17,6 @@
 @property (nonatomic) BOOL tomatoesInclude;
 
 + (instancetype)sharedInstance;
++ (void)setBaseURL:(NSString *)baseURL;
 
 @end

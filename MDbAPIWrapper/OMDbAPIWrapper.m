@@ -24,6 +24,10 @@ static NSString *BASE_URL = @"http://www.omdbapi.com?";
     return _sharedInstance;
 }
 
++ (void)setBaseURL:(NSString *)baseURL {
+    BASE_URL = baseURL;
+}
+
 - (void)fetchMovieByID:(NSString *)movieID success:(void (^)(Movie *))success failure:(void (^)(NSError *))failure {
     NSString *plotParam = self.fullPlot ? @"full" : @"short";
     NSString *tomatoesInclude = self.tomatoesInclude ? @"true" : @"false";

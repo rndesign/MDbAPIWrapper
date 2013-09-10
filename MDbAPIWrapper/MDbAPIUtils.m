@@ -11,7 +11,7 @@
 
 @implementation MDbAPIUtils
 
-NSString *YOUTUBE_QUERY_TEMPLATE = @"http://gdata.youtube.com/feeds/api/videos?q=%@-trailer&start-index=1&max-results=1&v=2&alt=json&hd";
+NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?q=%@-trailer&start-index=1&max-results=1&v=2&alt=json&hd";
 
 + (NSString *)encodeURLParameterValue:(NSString *)value {
     return [value stringByReplacingOccurrencesOfString:@" " withString:@"+"];
@@ -64,6 +64,10 @@ NSString *YOUTUBE_QUERY_TEMPLATE = @"http://gdata.youtube.com/feeds/api/videos?q
     }
 }
 
++ (void)setYouTuBeBaseURL:(NSString *)baseURL {
+    YOUTUBE_BASE_URL = baseURL;
+}
+
 + (void)fetchTrailerURLFromYouTube:(NSString *)title
                 success:(void (^)(NSString *))success
                 failure:(void (^)(NSError *))failure {
@@ -73,7 +77,7 @@ NSString *YOUTUBE_QUERY_TEMPLATE = @"http://gdata.youtube.com/feeds/api/videos?q
     // encode title
     title = [self encodeURLParameterValue:title];
     // composite url accodring to source type
-    NSString *url = [NSString stringWithFormat:YOUTUBE_QUERY_TEMPLATE, title];
+    NSString *url = [NSString stringWithFormat:YOUTUBE_BASE_URL, title];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {

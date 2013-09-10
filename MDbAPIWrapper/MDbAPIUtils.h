@@ -19,6 +19,7 @@
              success:(void(^)(UIImage *))success
              failure:(void(^)(NSError *error))failure;
 
++ (void)setYouTuBeBaseURL:(NSString *)baseURL;
 + (void)fetchTrailerURLFromYouTube:(NSString *)title
                 success:(void(^)(NSString *videoURL))success
                 failure:(void(^)(NSError *error))failure;
