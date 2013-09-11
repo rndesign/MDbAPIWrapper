@@ -45,7 +45,8 @@ static NSString *BASE_URL = @"http://www.omdbapi.com?";
                 movie.movieID = [JSON objectForKey:@"imdbID"];
                 movie.imdbID = movie.movieID;
                 
-                Artwork *poster = [[Artwork alloc] init];
+                Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
+                poster.movieID = movie.movieID;
                 poster.remotePath = [JSON objectForKey:@"Poster"];
                 movie.poster = poster;
                 

@@ -14,13 +14,11 @@
 @interface TMDbAPIWrapper : NSObject <MDbAPIWrapperProtocol>
 
 + (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey;
-/*
- For unit testing only!
- + (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey callback:(void(^)(void))callback;
- */
 
-+ (void)setBaseURL:(NSString *)baseURL;
-- (NSDictionary *)getImageConfiguration;
-- (NSDictionary *)getKeysConfiguration;
+- (void)setBaseURL:(NSString *)baseURL;
+
+- (void)fetchMovieList:(enum MovieListType)type
+               success:(void (^)(NSArray *))success
+               failure:(void (^)(NSError *))failure;
 
 @end

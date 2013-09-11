@@ -30,7 +30,7 @@
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     // No local copy can be stored since this library not combined with any app so far
-    Artwork *artwork = [[Artwork alloc] initWithIMDbID:@"tt1285016" type:ArtworkTypeImage];
+    Artwork *artwork = [[Artwork alloc] initWithType:ArtworkTypePoster];
     artwork.remotePath = @"http://ia.media-imdb.com/images/M/MV5BMTM2ODk0NDAwMF5BMl5BanBnXkFtZTcwNTM1MDc2Mw@@._V1_SX300.jpg";
     
     [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:NO success:^(UIImage *image) {
@@ -42,7 +42,7 @@
 - (void)testFetchInvalidImageArkwork {
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    Artwork *artwork = [[Artwork alloc] initWithIMDbID:@"tt1285016" type:ArtworkTypeImage];
+    Artwork *artwork = [[Artwork alloc] initWithType:ArtworkTypePoster];
     artwork.remotePath = @"in_the_middle_of_nowhere.jpg";
     
     [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:NO success:nil failure:^(NSError *error) {
