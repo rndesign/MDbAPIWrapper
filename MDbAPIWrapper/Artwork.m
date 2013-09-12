@@ -11,7 +11,7 @@
 
 - (id)initWithType:(enum ArtworkType)type {
     if (self = [super init]) {
-        self.type = type;
+        _type = type;
     }
     return self;
 }

@@ -12,7 +12,7 @@
 
 - (id) initWithSource:(enum RatingSource)source {
     if (self = [super init]) {
-        self.source = source;
+        _source = source;
     }
     return self;
 }

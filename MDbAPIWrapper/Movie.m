@@ -11,8 +11,8 @@
 
 - (id)initWithTitle:(NSString *)title {
     if (self = [super init]) {
-        self.title = title;
-        self.ratings = [[NSMutableDictionary alloc] init];
+        _title = title;
+        _ratings = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
