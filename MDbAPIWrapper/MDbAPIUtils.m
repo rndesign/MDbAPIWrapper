@@ -51,7 +51,7 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
             if (storeImage) {
                 // always store the original artkwork with PNG format
                 NSData *imageData = UIImagePNGRepresentation(image);
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
                 NSString *documentsPath = [paths objectAtIndex:0];
                 NSString *filename = [NSString stringWithFormat:@"/%@_%d.png", artwork.movieID, artwork.type];
                 NSString *filePath = [documentsPath stringByAppendingString:filename];
