@@ -13,6 +13,16 @@
 
 static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?q=%@-trailer&start-index=1&max-results=1&v=2&alt=json&hd";
 
++ (void)setYouTuBeBaseURL:(NSString *)baseURL {
+    YOUTUBE_BASE_URL = baseURL;
+}
+
++ (NSString *)stripStringIfHasColon:(NSString *)string {
+    NSRange range = [string rangeOfString:@":"];
+    if (range.location != NSNotFound) return [string substringToIndex:range.location];
+    else return string;
+}
+
 + (NSString *)encodeURLParameterValue:(NSString *)value {
     return [value stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 }
@@ -21,9 +31,8 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
     NSString *formattedParams = [[NSString alloc] init];
     
     for (id paramName in parameters) {
-        NSString *paramValue = [parameters objectForKey:paramName];
-        NSString *encodedParamValue = [self encodeURLParameterValue:paramValue];
-        formattedParams = [formattedParams stringByAppendingFormat:@"%@=%@&", paramName, encodedParamValue];
+        formattedParams = [formattedParams stringByAppendingFormat:@"%@=%@&", paramName,
+                           [self encodeURLParameterValue:[self stripStringIfHasColon:[parameters objectForKey:paramName]]]];
     }
     
     return [baseURL stringByAppendingString:formattedParams];
@@ -67,18 +76,11 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
     }
 }
 
-+ (void)setYouTuBeBaseURL:(NSString *)baseURL {
-    YOUTUBE_BASE_URL = baseURL;
-}
-
 + (void)fetchTrailerURLFromYouTube:(NSString *)title
                 success:(void (^)(NSString *))success
                 failure:(void (^)(NSError *))failure {
-    // strip title
-    NSRange range = [title rangeOfString:@":"];
-    if (range.location != NSNotFound) title = [title substringToIndex:range.location];
     // encode title
-    title = [self encodeURLParameterValue:title];
+    title = [self encodeURLParameterValue:[self stripStringIfHasColon:title]];
     // composite url accodring to source type
     NSString *url = [NSString stringWithFormat:YOUTUBE_BASE_URL, title];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];

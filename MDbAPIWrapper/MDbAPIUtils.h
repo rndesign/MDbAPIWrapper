@@ -11,6 +11,10 @@
 
 @interface MDbAPIUtils : NSObject
 
++ (void)setYouTuBeBaseURL:(NSString *)baseURL;
+
++ (NSString *)stripStringIfHasColon:(NSString *)string;
+
 + (NSString *)compositeRequestURL:(NSString *)baseURL
                        parameters:(NSDictionary *)parameters;
 
@@ -19,8 +23,6 @@
                storeImage:(BOOL)storeImage
                   success:(void(^)(UIImage *))success
                   failure:(void(^)(NSError *error))failure;
-
-+ (void)setYouTuBeBaseURL:(NSString *)baseURL;
 
 + (void)fetchTrailerURLFromYouTube:(NSString *)title
                            success:(void(^)(NSString *videoURL))success
