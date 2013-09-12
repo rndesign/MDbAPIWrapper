@@ -116,3 +116,8 @@ xcuserdata
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
 # ...none. Everything is now explained.
+*.xccheckout
+
+*.xccheckout
+
+MDbAPIWrapper.xcworkspace/xcshareddata/MDbAPIWrapper.xccheckout
