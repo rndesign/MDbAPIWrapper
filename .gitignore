@@ -12,6 +12,7 @@
 #####
 # POD files that should never be committed
 Pods/
+*.podspec
 
 #####
 # OS X temporary files that should never be committed
