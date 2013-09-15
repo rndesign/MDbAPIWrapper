@@ -20,7 +20,7 @@ TMDbAPIWrapper *wrapper;
 - (void)setUp {
     [super setUp];
     // Put setup code here; it will be run once, before the first test case.
-    wrapper = [TMDbAPIWrapper sharedInstanceWithKey:@"your_api_key"];
+    wrapper = [TMDbAPIWrapper sharedInstanceWithKey:@"you_api_key"];
 }
 
 - (void)tearDown {
@@ -99,6 +99,8 @@ TMDbAPIWrapper *wrapper;
         XCTAssertTrue(movie);
         XCTAssertTrue(movie.movieID, @"tt1285015");
         XCTAssertTrue(movie.title = @"The Social Network");
+        XCTAssertTrue(movie.poster);
+        XCTAssertTrue(movie.backdrop);
         
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSError *error) {

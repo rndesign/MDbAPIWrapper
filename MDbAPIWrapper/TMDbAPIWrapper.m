@@ -17,7 +17,7 @@
         _sharedInstance = [[self alloc] init];
         _sharedInstance.key = key;
         _sharedInstance.baseURL = @"http://api.themoviedb.org/3/%@?api_key=%@";
-        _sharedInstance.imageBaseURL = @"http://d3gtl9l2a4fn1j.cloudfront.net/t/p";
+        _sharedInstance.imageBaseURL = @"http://d3gtl9l2a4fn1j.cloudfront.net/t/p%@";
     });
     
     return _sharedInstance;
@@ -98,13 +98,13 @@
             
             Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
             poster.movieID = movie.movieID;
-            NSString *posterPath = [NSString stringWithFormat:@"/w500/%@", [JSON objectForKey:@"poster_path"]];
+            NSString *posterPath = [NSString stringWithFormat:@"/w500%@", [JSON objectForKey:@"poster_path"]];
             poster.remotePath = [NSString stringWithFormat:self.imageBaseURL, posterPath];
             movie.poster = poster;
             
             Artwork *backdrop = [[Artwork alloc] initWithType:ArtworkTypeBackdrop];
             backdrop.movieID = movie.movieID;
-            NSString *backdropPath = [NSString stringWithFormat:@"/w780/%@", [JSON objectForKey:@"poster_path"]];
+            NSString *backdropPath = [NSString stringWithFormat:@"/w780%@", [JSON objectForKey:@"backdrop_path"]];
             backdrop.remotePath = [NSString stringWithFormat:self.imageBaseURL, backdropPath];
             movie.backdrop = backdrop;
             
