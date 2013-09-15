@@ -39,7 +39,6 @@ OMDbAPIWrapper *wrapper;
     
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSError *error) {
-        XCTFail(@"Failed because of %@", [error userInfo]);
         dispatch_semaphore_signal(semaphore);
     }];
     
@@ -55,7 +54,6 @@ OMDbAPIWrapper *wrapper;
         XCTAssertTrue(!movie);
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSError *error) {
-        XCTFail(@"Failed because of %@", [error userInfo]);
         dispatch_semaphore_signal(semaphore);
     }];
     

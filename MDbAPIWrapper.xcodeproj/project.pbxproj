@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010607E517E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 010607E417E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m */; };
+		010607E717E5DCA400C41DBC /* RottenTomatoesAPIWrapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 010607E617E5DCA400C41DBC /* RottenTomatoesAPIWrapperTests.m */; };
 		015A874817DA51920076E10B /* OMDbAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A874417DA47A00076E10B /* OMDbAPIWrapper.m */; };
 		015A874917DA51920076E10B /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 014B393017DA3E6100DB9AE8 /* Movie.m */; };
 		015EFA0817DB763500E50D8A /* Artwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0717DB763500E50D8A /* Artwork.m */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		010607E317E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RottenTomatoesAPIWrapper.h; sourceTree = "<group>"; };
 		010607E417E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RottenTomatoesAPIWrapper.m; sourceTree = "<group>"; };
+		010607E617E5DCA400C41DBC /* RottenTomatoesAPIWrapperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RottenTomatoesAPIWrapperTests.m; sourceTree = "<group>"; };
 		014B392F17DA3E6100DB9AE8 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		014B393017DA3E6100DB9AE8 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		015A874317DA47A00076E10B /* OMDbAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDbAPIWrapper.h; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				01B11ADA17DE194700D4C450 /* MDbAPIUtilsTests.m */,
 				015EFA0C17DB838A00E50D8A /* OMDbAPIWrapperTests.m */,
 				01CF571317E0BBB5008F37BD /* TMDbAPIWrapperTests.m */,
+				010607E617E5DCA400C41DBC /* RottenTomatoesAPIWrapperTests.m */,
 				01DD573C17DA3D1E001DB1E1 /* Supporting Files */,
 			);
 			path = MDbAPIWrapperTests;
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010607E717E5DCA400C41DBC /* RottenTomatoesAPIWrapperTests.m in Sources */,
 				01B11ADB17DE194700D4C450 /* MDbAPIUtilsTests.m in Sources */,
 				015EFA0D17DB838A00E50D8A /* OMDbAPIWrapperTests.m in Sources */,
 				01CF571417E0BBB5008F37BD /* TMDbAPIWrapperTests.m in Sources */,

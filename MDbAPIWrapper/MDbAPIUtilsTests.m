@@ -36,7 +36,9 @@
     [MDbAPIUtils fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:NO success:^(UIImage *image) {
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(image);
-    } failure:nil];
+    } failure:^(NSError *error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
 }
 
 - (void)testFetchInvalidImageArkwork {
@@ -62,7 +64,9 @@
     [MDbAPIUtils fetchTrailerURLFromYouTube:@"The Social Network" success:^(NSString *videoURL) {
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(videoURL);
-    } failure:nil];
+    } failure:^(NSError *error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
     
     while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
@@ -76,7 +80,9 @@
     [MDbAPIUtils fetchTrailerURLFromYouTube:@"" success:^(NSString *videoURL) {
         dispatch_semaphore_signal(semaphore);
         XCTAssertTrue(!videoURL);
-    } failure:nil];
+    } failure:^(NSError *error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
     
     while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
