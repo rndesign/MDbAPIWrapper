@@ -16,7 +16,7 @@
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[self alloc] init];
         _sharedInstance.key = key;
-        _sharedInstance.baseURL = @"http://api.rottentomatoes.com/api/public/v1.0/%@?api_key=%@&page_limit=%d";
+        _sharedInstance.baseURL = @"http://api.rottentomatoes.com/api/public/v1.0/%@?apikey=%@&page_limit=%d";
         _sharedInstance.limit = 10;
     });
     

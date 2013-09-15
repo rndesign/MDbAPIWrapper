@@ -42,7 +42,8 @@
                 
                 Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
                 poster.movieID = movie.movieID;
-                poster.remotePath = [JSON objectForKey:@"Poster"];
+                NSString *posterURL = [JSON objectForKey:@"Poster"];
+                poster.remotePath = [posterURL stringByReplacingOccurrencesOfString:@"SX300" withString:@"SX600"];
                 movie.poster = poster;
                 
                 Rating *rating = [[Rating alloc] initWithSource:RatingSourceIMDb];
