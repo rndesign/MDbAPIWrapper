@@ -45,16 +45,17 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
                   failure:(void (^)(NSError *))failure {
     if (artwork.type == ArtworkTypeTrailer) return;
 
-    if (![[NSFileManager defaultManager] fileExistsAtPath:artwork.localPath]) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *filename = [NSString stringWithFormat:@"/%@_%d.png", artwork.movieID, artwork.type];
+    NSString *filePath = [documentsPath stringByAppendingString:filename];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:artwork.remotePath]];
         AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request imageProcessingBlock:^UIImage *(UIImage *image) {
             if (storeImage) {
                 // always store the original artkwork with PNG format
                 NSData *imageData = UIImagePNGRepresentation(image);
-                NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-                NSString *documentsPath = [paths objectAtIndex:0];
-                NSString *filename = [NSString stringWithFormat:@"/%@_%d.png", artwork.movieID, artwork.type];
-                NSString *filePath = [documentsPath stringByAppendingString:filename];
                 dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     [imageData writeToFile:filePath atomically:YES];
                     artwork.localPath = filePath;
@@ -71,13 +72,18 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
         
         [operation start];
     } else {
-        NSData *imageData = [NSData dataWithContentsOfFile:artwork.localPath];
-        
-        if (imageProcessingBlock)
-            success(imageProcessingBlock([UIImage imageWithData:imageData]));
-        else
-            success([UIImage imageWithData:imageData]);
+        if (success) {
+            NSData *imageData = [NSData dataWithContentsOfFile:filePath];
+            if (imageProcessingBlock)
+                success(imageProcessingBlock([UIImage imageWithData:imageData]));
+            else
+                success([UIImage imageWithData:imageData]);
+        }
     }
+}
+
++ (void)fetchImageArtwork:(Artwork *)artwork storeImage:(BOOL)storeImage {
+    [self fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:storeImage success:nil failure:nil];
 }
 
 + (void)fetchTrailerURLFromYouTube:(NSString *)title

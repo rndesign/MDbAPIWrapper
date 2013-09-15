@@ -24,6 +24,8 @@
                   success:(void(^)(UIImage *))success
                   failure:(void(^)(NSError *error))failure;
 
++ (void)fetchImageArtwork:(Artwork *)artwork storeImage:(BOOL)storeImage;
+
 + (void)fetchTrailerURLFromYouTube:(NSString *)title
                            success:(void(^)(NSString *videoURL))success
                            failure:(void(^)(NSError *error))failure;

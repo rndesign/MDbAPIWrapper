@@ -58,18 +58,6 @@
                 Movie *movie = [[Movie alloc] initWithTitle:[record objectForKey:@"title"]];
                 movie.movieID = [record objectForKey:@"id"];
                 
-                Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
-                poster.movieID = movie.movieID;
-                NSString *posterPath = [NSString stringWithFormat:@"/w500/%@", [record objectForKey:@"poster_path"]];
-                poster.remotePath = [NSString stringWithFormat:self.imageBaseURL, posterPath];
-                movie.poster = poster;
-                
-                Artwork *backdrop = [[Artwork alloc] initWithType:ArtworkTypeBackdrop];
-                backdrop.movieID = movie.movieID;
-                NSString *backdropPath = [NSString stringWithFormat:@"/w780/%@", [record objectForKey:@"poster_path"]];
-                backdrop.remotePath = [NSString stringWithFormat:self.imageBaseURL, backdropPath];
-                movie.backdrop = backdrop;
-                
                 [movies addObject:movie];
             }
             
@@ -97,13 +85,13 @@
             movie.imdbID = [JSON objectForKey:@"imdb_id"];
             
             Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
-            poster.movieID = movie.movieID;
+            poster.movieID = movie.imdbID;
             NSString *posterPath = [NSString stringWithFormat:@"/w500%@", [JSON objectForKey:@"poster_path"]];
             poster.remotePath = [NSString stringWithFormat:self.imageBaseURL, posterPath];
             movie.poster = poster;
             
             Artwork *backdrop = [[Artwork alloc] initWithType:ArtworkTypeBackdrop];
-            backdrop.movieID = movie.movieID;
+            backdrop.movieID = movie.imdbID;
             NSString *backdropPath = [NSString stringWithFormat:@"/w780%@", [JSON objectForKey:@"backdrop_path"]];
             backdrop.remotePath = [NSString stringWithFormat:self.imageBaseURL, backdropPath];
             movie.backdrop = backdrop;
