@@ -20,12 +20,18 @@ typedef NS_ENUM(NSInteger, MovieListTypeTMDb) {
  */
 @interface TMDbAPIWrapper : NSObject
 
-+ (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey;
+@property (strong, nonatomic) NSString *key;
+@property (strong, nonatomic) NSString *baseURL;
+@property (strong, nonatomic) NSString *imageBaseURL;
 
-- (void)setBaseURL:(NSString *)baseURL;
++ (instancetype)sharedInstanceWithKey:(NSString *)key;
 
 - (void)fetchMovieList:(enum MovieListTypeTMDb)type
                success:(void (^)(NSArray *))success
+               failure:(void (^)(NSError *))failure;
+
+- (void)fetchMovieByID:(NSString *)movieID
+               success:(void (^)(Movie *))success
                failure:(void (^)(NSError *))failure;
 
 @end

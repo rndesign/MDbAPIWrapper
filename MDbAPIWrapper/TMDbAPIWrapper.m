@@ -10,24 +10,17 @@
 
 @implementation TMDbAPIWrapper
 
-static NSString *BASE_URL = @"http://api.themoviedb.org/3/%@?api_key=%@";
-static NSString *POSTER_BASE_URL = @"http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w500%@";
-static NSString *BACKDROP_BASE_URL = @"http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w780%@";
-static NSString *API_KEY;
-
-+ (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey {
++ (instancetype)sharedInstanceWithKey:(NSString *)key {
     static TMDbAPIWrapper *_sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[self alloc] init];
-        API_KEY = apiKey;
+        _sharedInstance.key = key;
+        _sharedInstance.baseURL = @"http://api.themoviedb.org/3/%@?api_key=%@";
+        _sharedInstance.imageBaseURL = @"http://d3gtl9l2a4fn1j.cloudfront.net/t/p";
     });
     
     return _sharedInstance;
-}
-
-- (void)setBaseURL:(NSString *)baseURL {
-    BASE_URL = baseURL;
 }
 
 - (void)fetchMovieList:(enum MovieListTypeTMDb)type
@@ -52,7 +45,7 @@ static NSString *API_KEY;
             break;
     }
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:BASE_URL, functionName, API_KEY]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:self.baseURL, functionName, self.key]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -67,12 +60,14 @@ static NSString *API_KEY;
                 
                 Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
                 poster.movieID = movie.movieID;
-                poster.remotePath = [NSString stringWithFormat:POSTER_BASE_URL, [record objectForKey:@"poster_path"]];
+                NSString *posterPath = [NSString stringWithFormat:@"/w500/%@", [record objectForKey:@"poster_path"]];
+                poster.remotePath = [NSString stringWithFormat:self.imageBaseURL, posterPath];
                 movie.poster = poster;
                 
                 Artwork *backdrop = [[Artwork alloc] initWithType:ArtworkTypeBackdrop];
                 backdrop.movieID = movie.movieID;
-                backdrop.remotePath = [NSString stringWithFormat:BACKDROP_BASE_URL, [record objectForKey:@"backdrop_path"]];
+                NSString *backdropPath = [NSString stringWithFormat:@"/w780/%@", [record objectForKey:@"poster_path"]];
+                backdrop.remotePath = [NSString stringWithFormat:self.imageBaseURL, backdropPath];
                 movie.backdrop = backdrop;
                 
                 [movies addObject:movie];
@@ -84,6 +79,41 @@ static NSString *API_KEY;
         if (failure) failure(error);
     }];
 
+    [operation start];
+}
+
+- (void)fetchMovieByID:(NSString *)movieID
+               success:(void (^)(Movie *))success
+               failure:(void (^)(NSError *))failure {
+    NSString *query = [NSString stringWithFormat:@"movie/%@", movieID];
+    NSString *urlString = [NSString stringWithFormat:self.baseURL, query, self.key];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+      success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        if (success) {
+            Movie *movie = [[Movie alloc] initWithTitle:[JSON objectForKey:@"Title"]];
+            movie.movieID = [JSON objectForKey:@"id"];
+            movie.imdbID = [JSON objectForKey:@"imdb_id"];
+            
+            Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
+            poster.movieID = movie.movieID;
+            NSString *posterPath = [NSString stringWithFormat:@"/w500/%@", [JSON objectForKey:@"poster_path"]];
+            poster.remotePath = [NSString stringWithFormat:self.imageBaseURL, posterPath];
+            movie.poster = poster;
+            
+            Artwork *backdrop = [[Artwork alloc] initWithType:ArtworkTypeBackdrop];
+            backdrop.movieID = movie.movieID;
+            NSString *backdropPath = [NSString stringWithFormat:@"/w780/%@", [JSON objectForKey:@"poster_path"]];
+            backdrop.remotePath = [NSString stringWithFormat:self.imageBaseURL, backdropPath];
+            movie.backdrop = backdrop;
+            
+            success(movie);
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        if (failure) failure(error);
+    }];
+    
     [operation start];
 }
 

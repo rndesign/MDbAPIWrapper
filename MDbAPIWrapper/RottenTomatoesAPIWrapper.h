@@ -20,11 +20,11 @@ typedef NS_ENUM(NSInteger, MovieListTypeRT) {
  */
 @interface RottenTomatoesAPIWrapper : NSObject
 
-+ (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey;
+@property (strong, nonatomic) NSString *key;
+@property (strong, nonatomic) NSString *baseURL;
+@property (nonatomic) NSInteger limit;
 
-- (void)setBaseURL:(NSString *)baseURL;
-
-- (void)setLimitForMovieList:(NSInteger)limit;
++ (instancetype)sharedInstanceWithKey:(NSString *)Key;
 
 - (void)fetchMovieList:(enum MovieListTypeRT)type
                success:(void (^)(NSArray *))success

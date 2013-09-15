@@ -13,13 +13,14 @@
  */
 @interface OMDbAPIWrapper : NSObject
 
+@property (strong, nonatomic) NSString *baseURL;
 @property (nonatomic) BOOL fullPlot;
 @property (nonatomic) BOOL tomatoesInclude;
 
 + (instancetype)sharedInstance;
 
-+ (void)setBaseURL:(NSString *)baseURL;
-
-- (void)fetchMovieByID:(NSString *)movieID success:(void (^)(Movie *))success failure:(void (^)(NSError *))failure;
+- (void)fetchMovieByID:(NSString *)movieID
+               success:(void (^)(Movie *))success
+               failure:(void (^)(NSError *))failure;
 
 @end

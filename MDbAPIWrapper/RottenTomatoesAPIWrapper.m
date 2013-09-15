@@ -10,27 +10,17 @@
 
 @implementation RottenTomatoesAPIWrapper
 
-static NSInteger LIMIT = 10;
-static NSString *BASE_URL = @"http://api.rottentomatoes.com/api/public/v1.0/%@?api_key=%@&page_limit=%d";
-static NSString *API_KEY;
-
-+ (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey {
++ (instancetype)sharedInstanceWithKey:(NSString *)key {
     static RottenTomatoesAPIWrapper *_sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[self alloc] init];
-        API_KEY = apiKey;
+        _sharedInstance.key = key;
+        _sharedInstance.baseURL = @"http://api.rottentomatoes.com/api/public/v1.0/%@?api_key=%@&page_limit=%d";
+        _sharedInstance.limit = 10;
     });
     
     return _sharedInstance;
-}
-
-- (void)setBaseURL:(NSString *)baseURL {
-    BASE_URL = baseURL;
-}
-
-- (void)setLimitForMovieList:(NSInteger)limit {
-    LIMIT = limit;
 }
 
 - (void)fetchMovieList:(enum MovieListTypeRT)type
@@ -55,7 +45,7 @@ static NSString *API_KEY;
             break;
     }
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:BASE_URL, functionName, API_KEY, LIMIT]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:self.baseURL, functionName, self.key, self.limit]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -68,6 +58,7 @@ static NSString *API_KEY;
                 Movie *movie = [[Movie alloc] initWithTitle:[record objectForKey:@"title"]];
                 movie.movieID = [record objectForKey:@"id"];
                 movie.imdbID = [[record objectForKey:@"alternate_ids"] objectForKey:@"imdb"];
+                movie.title = [record objectForKey:@"title"];
                 
                 [movies addObject:movie];
             }

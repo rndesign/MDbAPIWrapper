@@ -11,20 +11,15 @@
 
 @implementation OMDbAPIWrapper
 
-static NSString *BASE_URL = @"http://www.omdbapi.com?";
-
 + (instancetype)sharedInstance {
     static OMDbAPIWrapper *_sharedInstance = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedInstance = [[self alloc] init];
+        _sharedInstance.baseURL = @"http://www.omdbapi.com?";
     });
     
     return _sharedInstance;
-}
-
-+ (void)setBaseURL:(NSString *)baseURL {
-    BASE_URL = baseURL;
 }
 
 - (void)fetchMovieByID:(NSString *)movieID success:(void (^)(Movie *))success failure:(void (^)(NSError *))failure {
@@ -32,7 +27,7 @@ static NSString *BASE_URL = @"http://www.omdbapi.com?";
     NSString *tomatoesInclude = self.tomatoesInclude ? @"true" : @"false";
     NSDictionary *parameters = @{ @"i":movieID, @"plot":plotParam, @"tomatoes":tomatoesInclude };
     
-    NSString *requestURL = [MDbAPIUtils compositeRequestURL:BASE_URL parameters:parameters];
+    NSString *requestURL = [MDbAPIUtils compositeRequestURL:self.baseURL parameters:parameters];
     NSURL *url = [NSURL URLWithString:requestURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
