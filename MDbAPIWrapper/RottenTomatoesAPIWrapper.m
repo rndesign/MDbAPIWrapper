@@ -57,7 +57,7 @@
             for (id record in rawData) {
                 Movie *movie = [[Movie alloc] initWithTitle:[record objectForKey:@"title"]];
                 movie.movieID = [record objectForKey:@"id"];
-                movie.imdbID = [[record objectForKey:@"alternate_ids"] objectForKey:@"imdb"];
+                movie.imdbID = [NSString stringWithFormat:@"tt%@", [[record objectForKey:@"alternate_ids"] objectForKey:@"imdb"]];
                 movie.title = [record objectForKey:@"title"];
                 
                 [movies addObject:movie];
