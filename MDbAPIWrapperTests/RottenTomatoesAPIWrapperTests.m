@@ -21,8 +21,7 @@ RottenTomatoesAPIWrapper *wrapper;
 {
     [super setUp];
     // Put setup code here; it will be run once, before the first test case.
-    wrapper = [RottenTomatoesAPIWrapper sharedInstanceWithAPIKey:@"you_api_key"];
-    [wrapper setLimitForMovieList:10];
+    wrapper = [RottenTomatoesAPIWrapper sharedInstanceWithKey:@"your_api_key"];
 }
 
 - (void)tearDown

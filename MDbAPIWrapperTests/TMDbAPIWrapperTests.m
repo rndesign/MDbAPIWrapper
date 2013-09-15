@@ -20,7 +20,7 @@ TMDbAPIWrapper *wrapper;
 - (void)setUp {
     [super setUp];
     // Put setup code here; it will be run once, before the first test case.
-    wrapper = [TMDbAPIWrapper sharedInstanceWithAPIKey:@"you_api_key"];
+    wrapper = [TMDbAPIWrapper sharedInstanceWithKey:@"your_api_key"];
 }
 
 - (void)tearDown {
@@ -92,5 +92,37 @@ TMDbAPIWrapper *wrapper;
                                  beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
 }
 
+- (void)testFetchMovie {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [wrapper fetchMovieByID:@"tt1285016" success:^(Movie *movie) {
+        XCTAssertTrue(movie);
+        XCTAssertTrue(movie.movieID, @"tt1285015");
+        XCTAssertTrue(movie.title = @"The Social Network");
+        
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+}
+
+- (void)testFetchMovieWithInvalidID {
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    
+    [wrapper fetchMovieByID:@"tt" success:^(Movie *movie) {
+        XCTAssertTrue(!movie);
+        dispatch_semaphore_signal(semaphore);
+    } failure:^(NSError *error) {
+        dispatch_semaphore_signal(semaphore);
+    }];
+    
+    while (dispatch_semaphore_wait(semaphore, DISPATCH_TIME_NOW))
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:10]];
+}
 
 @end
