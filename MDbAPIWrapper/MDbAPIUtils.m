@@ -72,7 +72,11 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
         [operation start];
     } else {
         NSData *imageData = [NSData dataWithContentsOfFile:artwork.localPath];
-        success(imageProcessingBlock([UIImage imageWithData:imageData]));
+        
+        if (imageProcessingBlock)
+            success(imageProcessingBlock([UIImage imageWithData:imageData]));
+        else
+            success([UIImage imageWithData:imageData]);
     }
 }
 
