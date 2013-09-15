@@ -31,7 +31,7 @@ static NSString *API_KEY = @"f004eff5d496e13b624315e9e86fbb2b";
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     TMDbAPIWrapper *wrapper = [TMDbAPIWrapper sharedInstanceWithAPIKey:API_KEY];
-    [wrapper fetchMovieList:MovieListTypeUpcoming success:^(NSArray *movies) {
+    [wrapper fetchMovieList:MovieListTypeTMDbUpcoming success:^(NSArray *movies) {
         XCTAssert(movies);
         XCTAssert([movies count] == 20);
         dispatch_semaphore_signal(semaphore);
@@ -49,7 +49,7 @@ static NSString *API_KEY = @"f004eff5d496e13b624315e9e86fbb2b";
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     TMDbAPIWrapper *wrapper = [TMDbAPIWrapper sharedInstanceWithAPIKey:API_KEY];
-    [wrapper fetchMovieList:MovieListTypeNowPlaying success:^(NSArray *movies) {
+    [wrapper fetchMovieList:MovieListTypeTMDbNowPlaying success:^(NSArray *movies) {
         XCTAssert(movies);
         XCTAssert([movies count] == 20);
         dispatch_semaphore_signal(semaphore);
@@ -67,7 +67,7 @@ static NSString *API_KEY = @"f004eff5d496e13b624315e9e86fbb2b";
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     TMDbAPIWrapper *wrapper = [TMDbAPIWrapper sharedInstanceWithAPIKey:API_KEY];
-    [wrapper fetchMovieList:MovieListTypePopular success:^(NSArray *movies) {
+    [wrapper fetchMovieList:MovieListTypeTMDbPopular success:^(NSArray *movies) {
         XCTAssert(movies);
         XCTAssert([movies count] == 20);
         dispatch_semaphore_signal(semaphore);
@@ -85,7 +85,7 @@ static NSString *API_KEY = @"f004eff5d496e13b624315e9e86fbb2b";
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     TMDbAPIWrapper *wrapper = [TMDbAPIWrapper sharedInstanceWithAPIKey:API_KEY];
-    [wrapper fetchMovieList:MovieListTypeTopRated success:^(NSArray *movies) {
+    [wrapper fetchMovieList:MovieListTypeTMDbTopRated success:^(NSArray *movies) {
         XCTAssert(movies);
         XCTAssert([movies count] == 20);
         dispatch_semaphore_signal(semaphore);

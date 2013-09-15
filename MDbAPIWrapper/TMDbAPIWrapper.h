@@ -6,18 +6,25 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MDbAPIWrapperProtocol.h"
+#import "Movie.h"
+
+typedef NS_ENUM(NSInteger, MovieListTypeTMDb) {
+    MovieListTypeTMDbUpcoming,
+    MovieListTypeTMDbNowPlaying,
+    MovieListTypeTMDbPopular,
+    MovieListTypeTMDbTopRated
+};
 
 /*
  TMDb API: http://docs.themoviedb.apiary.io/
  */
-@interface TMDbAPIWrapper : NSObject <MDbAPIWrapperProtocol>
+@interface TMDbAPIWrapper : NSObject
 
 + (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey;
 
 - (void)setBaseURL:(NSString *)baseURL;
 
-- (void)fetchMovieList:(enum MovieListType)type
+- (void)fetchMovieList:(enum MovieListTypeTMDb)type
                success:(void (^)(NSArray *))success
                failure:(void (^)(NSError *))failure;
 

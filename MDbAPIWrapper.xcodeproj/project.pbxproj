@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010607E517E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 010607E417E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m */; };
 		015A874817DA51920076E10B /* OMDbAPIWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 015A874417DA47A00076E10B /* OMDbAPIWrapper.m */; };
 		015A874917DA51920076E10B /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 014B393017DA3E6100DB9AE8 /* Movie.m */; };
 		015EFA0817DB763500E50D8A /* Artwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 015EFA0717DB763500E50D8A /* Artwork.m */; };
@@ -46,7 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		014B392E17DA3E6100DB9AE8 /* MDbAPIWrapperProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDbAPIWrapperProtocol.h; sourceTree = "<group>"; };
+		010607E317E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RottenTomatoesAPIWrapper.h; sourceTree = "<group>"; };
+		010607E417E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RottenTomatoesAPIWrapper.m; sourceTree = "<group>"; };
 		014B392F17DA3E6100DB9AE8 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		014B393017DA3E6100DB9AE8 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		015A874317DA47A00076E10B /* OMDbAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMDbAPIWrapper.h; sourceTree = "<group>"; };
@@ -131,13 +133,14 @@
 		01DD572717DA3D1E001DB1E1 /* MDbAPIWrapper */ = {
 			isa = PBXGroup;
 			children = (
-				014B392E17DA3E6100DB9AE8 /* MDbAPIWrapperProtocol.h */,
 				015EFA0917DB7A4100E50D8A /* MDbAPIUtils.h */,
 				015EFA0A17DB7A4100E50D8A /* MDbAPIUtils.m */,
 				015A874317DA47A00076E10B /* OMDbAPIWrapper.h */,
 				015A874417DA47A00076E10B /* OMDbAPIWrapper.m */,
 				01B085A617DF6E1300FD5DB8 /* TMDbAPIWrapper.h */,
 				01B085A717DF6E1300FD5DB8 /* TMDbAPIWrapper.m */,
+				010607E317E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.h */,
+				010607E417E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m */,
 				014B392F17DA3E6100DB9AE8 /* Movie.h */,
 				014B393017DA3E6100DB9AE8 /* Movie.m */,
 				015EFA0617DB763500E50D8A /* Artwork.h */,
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				010607E517E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m in Sources */,
 				01B085A517DF630B00FD5DB8 /* Rating.m in Sources */,
 				015A874817DA51920076E10B /* OMDbAPIWrapper.m in Sources */,
 				015A874917DA51920076E10B /* Movie.m in Sources */,

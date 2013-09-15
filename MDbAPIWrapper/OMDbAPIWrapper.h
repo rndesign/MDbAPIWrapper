@@ -6,17 +6,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MDbAPIWrapperProtocol.h"
+#import "Movie.h"
 
 /*
  OMDb API: http://www.omdbapi.com
  */
-@interface OMDbAPIWrapper : NSObject <MDbAPIWrapperProtocol>
+@interface OMDbAPIWrapper : NSObject
 
 @property (nonatomic) BOOL fullPlot;
 @property (nonatomic) BOOL tomatoesInclude;
 
 + (instancetype)sharedInstance;
+
 + (void)setBaseURL:(NSString *)baseURL;
+
+- (void)fetchMovieByID:(NSString *)movieID success:(void (^)(Movie *))success failure:(void (^)(NSError *))failure;
 
 @end
