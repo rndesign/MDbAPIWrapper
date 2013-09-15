@@ -1,3 +1,5 @@
+It may looks like a App based library at this moment, because I'm developing one upon it.
+
 MDbAPIWrapper
 =============
 The movie database API wrapper library.
