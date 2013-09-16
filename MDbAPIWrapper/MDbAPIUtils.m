@@ -47,19 +47,30 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
 
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *filename = [NSString stringWithFormat:@"/%@_%d.png", artwork.movieID, artwork.type];
+    NSString *fileExtension = [artwork.remotePath pathExtension];
+    NSString *filename = [NSString stringWithFormat:@"/%@_%d.%@", artwork.movieID, artwork.type, fileExtension];
     NSString *filePath = [documentsPath stringByAppendingString:filename];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:artwork.remotePath]];
         AFImageRequestOperation *operation = [AFImageRequestOperation imageRequestOperationWithRequest:request imageProcessingBlock:^UIImage *(UIImage *image) {
             if (storeImage) {
-                // always store the original artkwork with PNG format
-                NSData *imageData = UIImagePNGRepresentation(image);
-                dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [imageData writeToFile:filePath atomically:YES];
-                    artwork.localPath = filePath;
-                });
+                NSData *imageData = nil;
+                
+                if ([fileExtension rangeOfString:@"jpg" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                    imageData = UIImageJPEGRepresentation(image, 0.3);
+                } else if ([fileExtension rangeOfString:@"png" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+                    imageData = UIImagePNGRepresentation(image);
+                } else {
+                    NSLog(@"Not supported file extension.");
+                }
+                
+                if (imageData) {
+                    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        [imageData writeToFile:filePath atomically:YES];
+                        artwork.localPath = filePath;
+                    });
+                }
             }
             
             return imageProcessingBlock ? imageProcessingBlock(image) : image;
@@ -74,10 +85,11 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
     } else {
         if (success) {
             NSData *imageData = [NSData dataWithContentsOfFile:filePath];
-            if (imageProcessingBlock)
-                success(imageProcessingBlock([UIImage imageWithData:imageData]));
-            else
+            if (imageProcessingBlock) {
+                success(imageProcessingBlock([UIImage imageWithData:imageData scale:2]));
+            } else {
                 success([UIImage imageWithData:imageData]);
+            }
         }
     }
 }
