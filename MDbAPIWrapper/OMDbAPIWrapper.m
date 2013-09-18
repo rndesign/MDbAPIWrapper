@@ -14,51 +14,51 @@
 + (instancetype)sharedInstance {
     static OMDbAPIWrapper *_sharedInstance = nil;
     static dispatch_once_t oncePredicate;
-    dispatch_once(&oncePredicate, ^{
+    
+    dispatch_once(&oncePredicate, ^{        
+        NSURL *url = [NSURL URLWithString:@"http://www.omdbapi.com/"];
+        
         _sharedInstance = [[self alloc] init];
-        _sharedInstance.baseURL = @"http://www.omdbapi.com?";
+        _sharedInstance.httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     });
     
     return _sharedInstance;
 }
 
-- (void)fetchMovieByID:(NSString *)movieID success:(void (^)(Movie *))success failure:(void (^)(NSError *))failure {
-    NSString *plotParam = self.fullPlot ? @"full" : @"short";
-    NSString *tomatoesInclude = self.tomatoesInclude ? @"true" : @"false";
-    NSDictionary *parameters = @{ @"i":movieID, @"plot":plotParam, @"tomatoes":tomatoesInclude };
+- (AFHTTPRequestOperation *)getAFHTTPOperationForFetchingMovieByIMDbID:(NSString *)imdbID {
+    NSMutableURLRequest *request = [self.httpClient requestWithMethod:@"GET" path:@"" parameters:self.parameters];
+    return [[AFJSONRequestOperation alloc] initWithRequest:request];
+}
+
+- (void)fetchMovieByIMDbID:(NSString *)imdbID
+                   success:(void (^)(Movie *))success
+                   failure:(void (^)(NSError *))failure {
+    self.parameters = @{@"i":imdbID};
+    AFHTTPRequestOperation *operation = [self getAFHTTPOperationForFetchingMovieByIMDbID:imdbID];
     
-    NSString *requestURL = [MDbAPIUtils compositeRequestURL:self.baseURL parameters:parameters];
-    NSURL *url = [NSURL URLWithString:requestURL];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         if (success) {
-            if ([JSON objectForKey:@"Error"]) {
-                success (nil);
-            } else {
-                Movie *movie = [[Movie alloc] initWithTitle:[JSON objectForKey:@"Title"]];
-                movie.movieID = [JSON objectForKey:@"imdbID"];
-                movie.imdbID = movie.movieID;
-                
-                Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
-                poster.movieID = movie.movieID;
-                NSString *posterURL = [JSON objectForKey:@"Poster"];
-                poster.remotePath = [posterURL stringByReplacingOccurrencesOfString:@"SX300" withString:@"SX600"];
-                movie.poster = poster;
-                
-                Rating *rating = [[Rating alloc] initWithSource:RatingSourceIMDb];
-                rating.average = [JSON objectForKey:@"imdbRating"];
-                rating.votes = [JSON objectForKey:@"imdbVotes"];
-                [movie.ratings setObject:rating forKey:[NSNumber numberWithInt:RatingSourceIMDb]];
-                
-                success(movie);
-            }
+            Movie *movie = [[Movie alloc] initWithTitle:[responseObject objectForKey:@"Title"]];
+            movie.movieID = [responseObject objectForKey:@"imdbID"];
+            movie.imdbID = movie.movieID;
+            
+            Artwork *poster = [[Artwork alloc] initWithType:ArtworkTypePoster];
+            poster.movieID = movie.movieID;
+            NSString *posterURL = [responseObject objectForKey:@"Poster"];
+            poster.remotePath = [posterURL stringByReplacingOccurrencesOfString:@"SX300" withString:@"SX600"];
+            movie.poster = poster;
+            
+            Rating *rating = [[Rating alloc] initWithSource:RatingSourceIMDb];
+            rating.average = [responseObject objectForKey:@"imdbRating"];
+            rating.votes = [responseObject objectForKey:@"imdbVotes"];
+            [movie.ratings setObject:rating forKey:[NSNumber numberWithInt:RatingSourceIMDb]];
+            
+            success(movie);
         }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if (failure) failure(error);
     }];
     
-    // have to add "text/html" to acceptable content types
     [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
     [operation start];
 }

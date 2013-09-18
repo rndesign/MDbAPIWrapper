@@ -1,22 +1,15 @@
 //
-//  Files: TMDbAPIWrapper.h
+//  Files: APIWrapper.h
 //
 //  Copyright: (c) 2013 RN Design.
 //  License: GNU General Public License, version 2.
 //
 
 #import <Foundation/Foundation.h>
-#import "APIWrapper.h"
+#import "AFHTTPClient.h"
+#import "Movie.h"
 
-/*
- TMDb API: http://docs.themoviedb.apiary.io/
- */
-@interface TMDbAPIWrapper : APIWrapper
-
-@property (strong, nonatomic) AFHTTPClient *httpClient;
-@property (strong, nonatomic) NSDictionary *parameters;
-
-+ (instancetype)sharedInstanceWithAPIKey:(NSString *)apikey;
+@interface APIWrapper : NSObject
 
 - (AFHTTPRequestOperation *)getAFHTTPOperationForFetchingMovies:(enum MovieListType)type;
 
@@ -24,10 +17,16 @@
             success:(void (^)(NSArray *))success
             failure:(void (^)(NSError *))failure;
 
+- (AFHTTPRequestOperation *)getAFHTTPOperationForFetchingMovie:(NSString *)movieID;
+
+- (void)fetchMovie:(NSString *)movieID
+            success:(void (^)(NSArray *))success
+            failure:(void (^)(NSError *))failure;
+
 - (AFHTTPRequestOperation *)getAFHTTPOperationForFetchingMovieByIMDbID:(NSString *)imdbID;
 
 - (void)fetchMovieByIMDbID:(NSString *)imdbID
-                   success:(void (^)(Movie *))success
-                   failure:(void (^)(NSError *))failure;
+           success:(void (^)(NSArray *))success
+           failure:(void (^)(NSError *))failure;
 
 @end

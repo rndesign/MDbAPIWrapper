@@ -6,21 +6,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Movie.h"
+#import "APIWrapper.h"
 
 /*
  OMDb API: http://www.omdbapi.com
  */
-@interface OMDbAPIWrapper : NSObject
+@interface OMDbAPIWrapper : APIWrapper
 
-@property (strong, nonatomic) NSString *baseURL;
-@property (nonatomic) BOOL fullPlot;
-@property (nonatomic) BOOL tomatoesInclude;
+@property (strong, nonatomic) AFHTTPClient *httpClient;
+@property (strong, nonatomic) NSDictionary *parameters;
 
 + (instancetype)sharedInstance;
 
-- (void)fetchMovieByID:(NSString *)movieID
-               success:(void (^)(Movie *))success
-               failure:(void (^)(NSError *))failure;
+- (AFHTTPRequestOperation *)getAFHTTPOperationForFetchingMovieByIMDbID:(NSString *)imdbID;
+
+- (void)fetchMovieByIMDbID:(NSString *)imdbID
+                   success:(void (^)(Movie *))success
+                   failure:(void (^)(NSError *))failure;
 
 @end

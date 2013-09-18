@@ -15,11 +15,13 @@
 
 + (NSString *)stripStringIfHasColon:(NSString *)string;
 
-+ (NSString *)compositeRequestURL:(NSString *)baseURL
-                       parameters:(NSDictionary *)parameters;
-
 + (void)fetchImageArtwork:(Artwork *)artwork
      imageProcessingBlock:(UIImage *(^)(UIImage *))imageProcessingBlock
+               storeImage:(BOOL)storeImage
+                  success:(void(^)(UIImage *))success
+                  failure:(void(^)(NSError *error))failure;
+
++ (void)fetchImageArtwork:(Artwork *)artwork
                storeImage:(BOOL)storeImage
                   success:(void(^)(UIImage *))success
                   failure:(void(^)(NSError *error))failure;

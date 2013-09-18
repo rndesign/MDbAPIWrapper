@@ -66,6 +66,7 @@
 		01B085A417DF630B00FD5DB8 /* Rating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rating.m; sourceTree = "<group>"; };
 		01B085A617DF6E1300FD5DB8 /* TMDbAPIWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDbAPIWrapper.h; sourceTree = "<group>"; };
 		01B085A717DF6E1300FD5DB8 /* TMDbAPIWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDbAPIWrapper.m; sourceTree = "<group>"; };
+		01C37B7517E9F8C8002E769E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		01CF571317E0BBB5008F37BD /* TMDbAPIWrapperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDbAPIWrapperTests.m; sourceTree = "<group>"; };
 		01DD572217DA3D1E001DB1E1 /* libMDbAPIWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMDbAPIWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		01DD572517DA3D1E001DB1E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,9 +93,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */,
 				01DD573417DA3D1E001DB1E1 /* XCTest.framework in Frameworks */,
 				01DD573A17DA3D1E001DB1E1 /* libMDbAPIWrapper.a in Frameworks */,
-				01DD573517DA3D1E001DB1E1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +125,7 @@
 		01DD572417DA3D1E001DB1E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01C37B7517E9F8C8002E769E /* SystemConfiguration.framework */,
 				01DD572517DA3D1E001DB1E1 /* Foundation.framework */,
 				01DD573317DA3D1E001DB1E1 /* XCTest.framework */,
 				01DD573617DA3D1E001DB1E1 /* UIKit.framework */,
@@ -299,12 +301,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				010607E517E5BE2F00C41DBC /* RottenTomatoesAPIWrapper.m in Sources */,
-				01B085A517DF630B00FD5DB8 /* Rating.m in Sources */,
 				015A874817DA51920076E10B /* OMDbAPIWrapper.m in Sources */,
-				015A874917DA51920076E10B /* Movie.m in Sources */,
-				015EFA0B17DB7A4100E50D8A /* MDbAPIUtils.m in Sources */,
-				015EFA0817DB763500E50D8A /* Artwork.m in Sources */,
 				01B085A817DF6E1300FD5DB8 /* TMDbAPIWrapper.m in Sources */,
+				015EFA0B17DB7A4100E50D8A /* MDbAPIUtils.m in Sources */,
+				015A874917DA51920076E10B /* Movie.m in Sources */,
+				015EFA0817DB763500E50D8A /* Artwork.m in Sources */,
+				01B085A517DF630B00FD5DB8 /* Rating.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

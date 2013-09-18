@@ -9,6 +9,15 @@
 #import "Artwork.h"
 #import "Rating.h"
 
+typedef NS_ENUM(NSInteger, MovieListType) {
+    MovieListTypeBoxOffice,
+    MovieListTypeInTheaters,
+    MovieListTypeOpening,
+    MovieListTypeUpcoming,
+    MovieListTypePopular,
+    MovieListTypeTopRated
+};
+
 @interface Movie : NSObject
 
 @property (nonatomic, strong) NSString *movieID;    // MDb own ID

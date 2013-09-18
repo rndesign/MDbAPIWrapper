@@ -94,6 +94,12 @@ static NSString *YOUTUBE_BASE_URL = @"http://gdata.youtube.com/feeds/api/videos?
     }
 }
 
++ (void)fetchImageArtwork:(Artwork *)artwork storeImage:(BOOL)storeImage
+                  success:(void (^)(UIImage *))success
+                  failure:(void (^)(NSError *))failure {
+    [self fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:storeImage success:success failure:failure];
+}
+
 + (void)fetchImageArtwork:(Artwork *)artwork storeImage:(BOOL)storeImage {
     [self fetchImageArtwork:artwork imageProcessingBlock:nil storeImage:storeImage success:nil failure:nil];
 }

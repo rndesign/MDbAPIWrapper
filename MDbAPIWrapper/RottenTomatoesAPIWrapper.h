@@ -6,27 +6,21 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Movie.h"
-
-typedef NS_ENUM(NSInteger, MovieListTypeRT) {
-    MovieListTypeRTBoxOffice,
-    MovieListTypeRTInTheaters,
-    MovieListTypeRTOpening,
-    MovieListTypeRTUpcoming
-};
+#import "APIWrapper.h"
 
 /*
  Rotten Tomatoes API: http://developer.rottentomatoes.com/docs
  */
-@interface RottenTomatoesAPIWrapper : NSObject
+@interface RottenTomatoesAPIWrapper : APIWrapper
 
-@property (strong, nonatomic) NSString *key;
-@property (strong, nonatomic) NSString *baseURL;
-@property (nonatomic) NSInteger limit;
+@property (strong, nonatomic) AFHTTPClient *httpClient;
+@property (strong, nonatomic) NSDictionary *parameters;
 
-+ (instancetype)sharedInstanceWithKey:(NSString *)Key;
++ (instancetype)sharedInstanceWithAPIKey:(NSString *)apiKey;
 
-- (void)fetchMovieList:(enum MovieListTypeRT)type
+- (AFHTTPRequestOperation *)getAFHTTPOperationForFetchingMovies:(enum MovieListType)type;
+
+- (void)fetchMovies:(enum MovieListType)type
                success:(void (^)(NSArray *))success
                failure:(void (^)(NSError *))failure;
 
